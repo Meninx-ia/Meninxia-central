@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Blog · Clínica Sijé</title>
+<meta name="description" content="Artículos de psicología para familias de Clínica Sijé, Águilas.">
+<link rel="icon" href="https://clinicapsije.com/wp-content/uploads/2024/01/s.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --paper: #F6F8F7; --surface: #FFFFFF; --ink: #17324D; --muted: #4F6475;
+  --sea: #1D7A78; --sea-strong: #155F5D; --sea-soft: #E3F1EF; --sun: #F2B84B; --line: #D5E0DE; --on-sea: #FFFFFF;
+  color-scheme: light; box-sizing: border-box;
+  padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #0F1C24; --surface: #16262F; --ink: #E8F0F2; --muted: #A9BCC4;
+    --sea: #5FC2BC; --sea-strong: #86D6D0; --sea-soft: #173334; --sun: #F2C46A; --line: #2A3E48; --on-sea: #0F1C24;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #0F1C24; --surface: #16262F; --ink: #E8F0F2; --muted: #A9BCC4;
+  --sea: #5FC2BC; --sea-strong: #86D6D0; --sea-soft: #173334; --sun: #F2C46A; --line: #2A3E48; --on-sea: #0F1C24;
+  color-scheme: dark;
+}
+*, *::before, *::after { box-sizing: inherit; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 1.1rem/1.7 "Atkinson Hyperlegible", "Segoe UI", Roboto, Arial, sans-serif; }
+a { color: var(--sea-strong); }
+a:focus-visible, button:focus-visible { outline: 3px solid var(--sun); outline-offset: 3px; border-radius: 6px; }
+img { max-width: 100%; display: block; }
+.wrap { width: min(760px, 100% - 2.5rem); margin-inline: auto; }
+header { background: var(--surface); border-bottom: 1px solid var(--line); position: sticky; top: env(safe-area-inset-top, 0px); z-index: 10; }
+header .wrap { width: min(1140px, 100% - 2.5rem); display: flex; align-items: center; justify-content: space-between; min-height: 68px; gap: 1rem; }
+.brand { display: flex; align-items: center; text-decoration: none; color: var(--ink); font: 800 1.3rem "Bricolage Grotesque", sans-serif; }
+.brand img { height: 40px; width: auto; }
+.btn { display: inline-flex; align-items: center; justify-content: center; font: 700 1rem/1 "Atkinson Hyperlegible", sans-serif; text-decoration: none; padding: .85rem 1.25rem; border-radius: 999px; background: var(--sea); color: var(--on-sea); }
+.back { display: inline-block; margin: 2rem 0 1rem; font-weight: 700; text-decoration: none; }
+.meta { color: var(--muted); font-size: .98rem; display: flex; gap: .6rem; flex-wrap: wrap; align-items: center; }
+.tag { background: var(--sea-soft); color: var(--ink); border-radius: 999px; padding: .2rem .75rem; font-weight: 700; font-size: .9rem; }
+h1 { font: 800 clamp(2rem, 5vw, 3rem)/1.1 "Bricolage Grotesque", "Segoe UI", sans-serif; letter-spacing: -0.02em; margin: .6rem 0 1rem; }
+.lede { font-size: 1.2rem; color: var(--muted); }
+.cover { margin: 1.6rem 0 2rem; border-radius: 22px; overflow: hidden; aspect-ratio: 3 / 2; background: var(--sea-soft); }
+.cover img { width: 100%; height: 100%; object-fit: cover; }
+.body h2, .body h3 { font-family: "Bricolage Grotesque", "Segoe UI", sans-serif; line-height: 1.2; margin: 2rem 0 .6rem; }
+.body h2 { font-size: 1.6rem; }
+.body h3 { font-size: 1.25rem; }
+.body p, .body li { max-width: 68ch; }
+.body blockquote { border-left: 4px solid var(--sun); margin: 1.4rem 0; padding: .2rem 0 .2rem 1rem; color: var(--muted); font-style: italic; }
+.sources { margin-top: 2.5rem; padding-top: 1.5rem; border-top: 1px solid var(--line); font-size: .96rem; color: var(--muted); }
+.sources h2 { font: 700 1.1rem "Bricolage Grotesque", sans-serif; color: var(--ink); margin: 0 0 .6rem; }
+.cta { margin: 3rem 0; background: var(--sea); color: var(--on-sea); border-radius: 24px; padding: 1.8rem; }
+.cta h2 { font: 800 1.5rem/1.2 "Bricolage Grotesque", sans-serif; margin: 0 0 .5rem; }
+.cta p { margin: 0 0 1.2rem; }
+.cta .btn { background: var(--sun); color: #17324D; }
+.empty { padding: 4rem 0; }
+footer { border-top: 1px solid var(--line); padding: 2rem 0; color: var(--muted); font-size: .95rem; }
+footer .wrap { width: min(1140px, 100% - 2.5rem); }
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <a class="brand" href="index.html" aria-label="Clínica Sijé, inicio">
+      <img src="https://clinicapsije.com/wp-content/uploads/2024/01/clinica-sije.svg" alt="Clínica Sijé" onerror="this.replaceWith('Clínica Sijé')">
+    </a>
+    <a class="btn" href="index.html#contacto">Pedir cita</a>
+  </div>
+</header>
+
+<main class="wrap" id="main">
+  <a class="back" href="index.html#blog">← Volver al blog</a>
+  <article id="articulo" aria-live="polite">
+    <p class="empty">Cargando artículo…</p>
+  </article>
+  <section class="cta">
+    <h2>¿Te preocupa algo de lo que has leído?</h2>
+    <p>Llámanos o escríbenos y lo hablamos. Atendemos a niños, adolescentes, adultos y familias en Águilas.</p>
+    <a class="btn" href="tel:+34609823545">Llamar al 609 82 35 45</a>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">© <span id="year">2026</span> Clínica Sijé · C/ Isidoro de la Cierva, 3 · 30880 Águilas (Murcia)</div>
+</footer>
+
+<script>
+(function () {
+  var SUPABASE_URL = 'https://pvutugscntjrsmgeirpt.supabase.co';
+  var SUPABASE_KEY = 'sb_publishable_Jxeh7ZOnGuO5xTwMZgqQww_eIgzRHxI';
+  var cont = document.getElementById('articulo');
+  var slug = new URLSearchParams(location.search).get('p');
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  function vacio(msg) {
+    cont.innerHTML = '';
+    var p = document.createElement('p'); p.className = 'empty'; p.textContent = msg;
+    var a = document.createElement('a'); a.href = 'index.html#blog'; a.textContent = 'Ver todos los artículos';
+    p.appendChild(document.createElement('br')); p.appendChild(a);
+    cont.appendChild(p);
+  }
+
+  function limpiarHtml(html) {
+    var doc = new DOMParser().parseFromString('<div>' + html + '</div>', 'text/html');
+    var permitidas = ['H2','H3','P','UL','OL','LI','STRONG','EM','BLOCKQUOTE','A','BR'];
+    doc.body.querySelectorAll('*').forEach(function (el) {
+      if (el.tagName === 'DIV' && el.parentNode === doc.body) return;
+      if (permitidas.indexOf(el.tagName) === -1) { el.replaceWith(document.createTextNode(el.textContent)); return; }
+      Array.from(el.attributes).forEach(function (at) { if (!(el.tagName === 'A' && at.name === 'href')) el.removeAttribute(at.name); });
+      if (el.tagName === 'A') {
+        if (!/^https?:\/\//i.test(el.getAttribute('href') || '')) el.removeAttribute('href');
+        el.setAttribute('target', '_blank'); el.setAttribute('rel', 'noopener');
+      }
+    });
+    return doc.body.firstChild.innerHTML;
+  }
+
+  if (!slug) { vacio('No se ha indicado ningún artículo.'); return; }
+
+  fetch(SUPABASE_URL + '/rest/v1/blog_posts?select=*&estado=eq.publicado&slug=eq.' + encodeURIComponent(slug) + '&limit=1', {
+    headers: { apikey: SUPABASE_KEY }
+  }).then(function (r) { if (!r.ok) throw new Error(); return r.json(); }).then(function (rows) {
+    var a = rows && rows[0];
+    if (!a) { vacio('Este artículo no existe o ya no está publicado.'); return; }
+    document.title = a.titulo + ' · Clínica Sijé';
+    var meta = document.querySelector('meta[name=description]'); if (meta && a.resumen) meta.content = a.resumen;
+    var fecha = new Intl.DateTimeFormat('es-ES', { day: 'numeric', month: 'long', year: 'numeric' }).format(new Date(a.publicado_en));
+    cont.innerHTML = '';
+    var m = document.createElement('div'); m.className = 'meta';
+    if (a.categoria) { var tag = document.createElement('span'); tag.className = 'tag'; tag.textContent = a.categoria; m.appendChild(tag); }
+    var t = document.createElement('time'); t.dateTime = a.publicado_en; t.textContent = fecha; m.appendChild(t);
+    cont.appendChild(m);
+    var h1 = document.createElement('h1'); h1.textContent = a.titulo; cont.appendChild(h1);
+    if (a.resumen) { var l = document.createElement('p'); l.className = 'lede'; l.textContent = a.resumen; cont.appendChild(l); }
+    if (a.imagen_url) {
+      var fig = document.createElement('figure'); fig.className = 'cover';
+      var img = document.createElement('img'); img.src = a.imagen_url; img.alt = a.imagen_alt || '';
+      img.onerror = function () { fig.remove(); };
+      fig.appendChild(img); cont.appendChild(fig);
+    }
+    var body = document.createElement('div'); body.className = 'body'; body.innerHTML = limpiarHtml(a.contenido_html || '');
+    cont.appendChild(body);
+    var fuentes = Array.isArray(a.fuentes) ? a.fuentes : [];
+    if (fuentes.length) {
+      var s = document.createElement('section'); s.className = 'sources';
+      var hs = document.createElement('h2'); hs.textContent = 'Fuentes'; s.appendChild(hs);
+      var ul = document.createElement('ul');
+      fuentes.forEach(function (f) {
+        if (!f || !/^https?:\/\//i.test(f.url || '')) return;
+        var li = document.createElement('li'); var link = document.createElement('a');
+        link.href = f.url; link.target = '_blank'; link.rel = 'noopener'; link.textContent = f.titulo || f.url;
+        li.appendChild(link); ul.appendChild(li);
+      });
+      s.appendChild(ul); cont.appendChild(s);
+    }
+  }).catch(function () { vacio('No se ha podido cargar el artículo. Comprueba tu conexión y vuelve a intentarlo.'); });
+})();
+</script>
+</body>
+</html>
