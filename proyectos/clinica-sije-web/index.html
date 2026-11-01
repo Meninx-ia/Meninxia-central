@@ -739,19 +739,37 @@ footer.site a:hover { color: var(--sea-strong); }
   ];
   var fmt = new Intl.DateTimeFormat('es-ES', { day: 'numeric', month: 'long', year: 'numeric' });
   var wrap = document.getElementById('posts');
-  posts.forEach(function (p, i) {
-    var a = document.createElement('a');
-    a.className = 'post' + (i > 2 ? ' hidden' : '');
-    a.href = base + p[2];
-    var cover = document.createElement('div'); cover.className = 'cover';
-    var img = document.createElement('img'); img.src = base + p[3]; img.alt = ''; img.loading = 'lazy';
-    img.onerror = function () { img.style.display = 'none'; };
-    cover.appendChild(img);
-    var t = document.createElement('time'); t.dateTime = p[0]; t.textContent = fmt.format(new Date(p[0] + 'T12:00:00'));
-    var h = document.createElement('h3'); h.textContent = p[1];
-    a.appendChild(cover); a.appendChild(t); a.appendChild(h);
-    wrap.appendChild(a);
+  var antiguos = posts.map(function (p) {
+    return { fecha: p[0] + 'T12:00:00', titulo: p[1], href: base + p[2], img: base + p[3], alt: '' };
   });
+  function pintar(lista) {
+    wrap.innerHTML = '';
+    lista.forEach(function (p, i) {
+      var a = document.createElement('a');
+      a.className = 'post' + (i > 2 ? ' hidden' : '');
+      a.href = p.href;
+      var cover = document.createElement('div'); cover.className = 'cover';
+      var img = document.createElement('img'); img.src = p.img || ''; img.alt = p.alt || ''; img.loading = 'lazy';
+      img.onerror = function () { img.style.display = 'none'; };
+      cover.appendChild(img);
+      var t = document.createElement('time'); t.dateTime = p.fecha; t.textContent = fmt.format(new Date(p.fecha));
+      var h = document.createElement('h3'); h.textContent = p.titulo;
+      a.appendChild(cover); a.appendChild(t); a.appendChild(h);
+      wrap.appendChild(a);
+    });
+  }
+  pintar(antiguos);
+  var SUPABASE_URL = 'https://pvutugscntjrsmgeirpt.supabase.co';
+  var SUPABASE_KEY = 'sb_publishable_Jxeh7ZOnGuO5xTwMZgqQww_eIgzRHxI';
+  fetch(SUPABASE_URL + '/rest/v1/blog_posts?select=titulo,slug,imagen_url,imagen_alt,publicado_en&estado=eq.publicado&order=publicado_en.desc&limit=30', {
+    headers: { apikey: SUPABASE_KEY }
+  }).then(function (r) { return r.ok ? r.json() : []; }).then(function (nuevos) {
+    if (!Array.isArray(nuevos) || !nuevos.length) return;
+    var lista = nuevos.map(function (n) {
+      return { fecha: n.publicado_en, titulo: n.titulo, href: 'articulo.html?p=' + encodeURIComponent(n.slug), img: n.imagen_url, alt: n.imagen_alt };
+    });
+    pintar(lista.concat(antiguos));
+  }).catch(function () {});
   var more = document.getElementById('more');
   more.addEventListener('click', function () {
     var hidden = wrap.querySelectorAll('.post.hidden');
