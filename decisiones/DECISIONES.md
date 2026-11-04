@@ -52,7 +52,7 @@ Conservar las decisiones estratégicas y técnicas de MENINXIA para garantizar l
 
 ## 5. Decisiones técnicas — MKT-07 (base de datos de pruebas)
 
-Detalle técnico en `proyectos/mkt07-estratega-campanas/README.md`.
+Detalle técnico en `proyectos/mkt07-estratega-campanas/README.md`. Los nombres de tablas citados aquí cambiaron el 2026-11-04 (ver D-010).
 
 ### D-006 — Una sola tabla de inmuebles para datos reales y de prueba
 **Fecha:** 2026-11-03  
@@ -80,18 +80,38 @@ Detalle técnico en `proyectos/mkt07-estratega-campanas/README.md`.
 
 ### D-009 — Acceso de MKT-07 solo mediante vistas y evaluación separada
 **Fecha:** 2026-11-03  
-**Decisión:** MKT-07 leerá solo las vistas `v_mkt07_*`, que excluyen email y teléfono. Las respuestas correctas de las pruebas se guardan en el esquema `evaluacion`, que el agente no debe consultar.  
+**Decisión:** MKT-07 leerá solo vistas que excluyen email y teléfono. Las respuestas correctas de las pruebas se guardan en el esquema `evaluacion`, que el agente no debe consultar.  
 **Estado:** Propuesta. Pendiente de ratificación de ambos socios.  
 **Aprobada por:** Pendiente.  
 **Justificación:** Minimización de datos y evaluación fiable de la precisión del agente.  
 **Implementación:** Vistas y esquema creados. Flujo de n8n pendiente.
 
-## 6. Reglas de consulta
+## 6. Decisiones técnicas — Organización de datos
+
+Detalle técnico en `proyectos/organizacion-datos/README.md`.
+
+### D-010 — Un esquema de Supabase por departamento y Drive organizado por cliente
+**Fecha:** 2026-11-04  
+**Decisión:** Los datos se agrupan en esquemas por departamento: `plataforma`, `inmobiliario`, `clientes`, `atencion_cliente` y `marketing`. Google Drive se organiza como `clientes/<empresa>/<departamento>`. Los workflows antiguos de n8n siguen funcionando mediante accesos directos temporales en `public`; los workflows nuevos deben usar los esquemas de departamento.  
+**Estado:** Propuesta. Autorizada en conversación con Claude por un socio el 2026-11-04; pendiente de ratificación del segundo socio.  
+**Aprobada por:** Pendiente.  
+**Justificación:** Orden, permisos por departamento y, en Drive, poder entregar o borrar todos los datos de un cliente de una vez.  
+**Implementación:** Operativa. Pendiente actualizar workflows antiguos y retirar accesos directos.
+
+### D-011 — Clínica Sijé separada de los datos inmobiliarios
+**Fecha:** 2026-11-04  
+**Decisión:** Los datos del blog de Clínica Sijé pasan al esquema propio `clinica_sije`. La clave pública solo puede leer sus artículos publicados. A medio plazo, valorar trasladarlo a un proyecto de Supabase independiente.  
+**Estado:** Propuesta. Autorizada en conversación con Claude por un socio el 2026-11-04; pendiente de ratificación del segundo socio.  
+**Aprobada por:** Pendiente.  
+**Justificación:** Es otro cliente y otro sector, con una web pública que accede a la base de datos. Debe estar aislado del resto.  
+**Implementación:** Operativa (esquema propio). Proyecto independiente: pendiente de decisión.
+
+## 7. Reglas de consulta
 Antes de proponer cambios estratégicos, Claude y los agentes deberán consultar las decisiones relevantes.
 
 Si no pueden acceder a este documento, deberán advertirlo.
 
 Las decisiones pendientes de ratificación no se considerarán formalmente aprobadas.
 
-## 7. Principio fundamental
+## 8. Principio fundamental
 Las decisiones deben ser trazables, verificables y revisables, respetando la autoridad de ambos responsables y la Constitución de MENINXIA.
