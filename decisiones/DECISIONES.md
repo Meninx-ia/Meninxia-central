@@ -106,12 +106,25 @@ Detalle técnico en `proyectos/organizacion-datos/README.md`.
 **Justificación:** Es otro cliente y otro sector, con una web pública que accede a la base de datos. Debe estar aislado del resto.  
 **Implementación:** Operativa (esquema propio). Proyecto independiente: pendiente de decisión.
 
-## 7. Reglas de consulta
+## 7. Decisiones comerciales — Campañas personalizadas
+
+Detalle técnico en `proyectos/mkt07-estratega-campanas/MOTOR_COINCIDENCIAS.md`.
+
+### D-012 — Proponer también inmuebles que fallan en un detalle leve
+**Fecha:** 2026-11-04  
+**Decisión:** Las campañas personalizadas incluyen, además de los encajes totales y parciales, las "alternativas cercanas": inmuebles que fallan en un solo detalle leve (precio hasta un 10 % superior, una habitación o un baño menos, superficie hasta un 10 % menor o una característica imprescindible ausente). La campaña debe explicar la diferencia con claridad; nunca ocultarla. No se perdonan nunca: inmuebles vendidos, reservados o sin autorización, otra operación, otro tipo o municipio, ni compradores sin consentimiento.  
+**Estado:** Propuesta. Autorizada en conversación con Claude por un socio el 2026-11-04; pendiente de ratificación del segundo socio.  
+**Aprobada por:** Pendiente.  
+**Justificación:** "Por un pequeño detalle no vamos a perder una venta." En los datos de prueba, 12 de las 23 oportunidades son alternativas cercanas. Explicar la diferencia protege la confianza del cliente y evita publicidad engañosa.  
+**Implementación:** Motor de coincidencias operativo y verificado. Campaña y envío pendientes.  
+**Sustituye a:** La regla "no recomendar inmuebles que incumplan requisitos obligatorios" del documento de especificación del sistema de compradores e inmuebles, en lo relativo a detalles leves.
+
+## 8. Reglas de consulta
 Antes de proponer cambios estratégicos, Claude y los agentes deberán consultar las decisiones relevantes.
 
 Si no pueden acceder a este documento, deberán advertirlo.
 
 Las decisiones pendientes de ratificación no se considerarán formalmente aprobadas.
 
-## 8. Principio fundamental
+## 9. Principio fundamental
 Las decisiones deben ser trazables, verificables y revisables, respetando la autoridad de ambos responsables y la Constitución de MENINXIA.
